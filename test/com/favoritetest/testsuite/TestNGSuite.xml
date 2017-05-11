@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Java Selenium Example for favoritetest.com page">
+
+    <test name="All tests for Java_Selenium_Example">
+        <packages>
+            <package name="com.favoritetest.testcases.*"/>
+        </packages>
+    </test>
+
+</suite>

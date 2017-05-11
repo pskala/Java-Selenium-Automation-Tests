@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<configuration>
+    <properties>
+        <browser>firefox</browser>
+        <url>http://favoritetest.com/</url>
+        <wait>20</wait>
+        <geckoPath>c:\\Program Files\\geckodriver\\geckodriver.exe</geckoPath>
+        <remoteWebDriver>false</remoteWebDriver>
+        <size>DESKTOP</size>
+    </properties>
+    <users>
+        <admin>
+            <name></name>
+            <password></password>
+        </admin>
+        <user>
+            <name></name>
+            <password></password>
+        </user>
+    </users>
+</configuration>
