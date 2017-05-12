@@ -14,6 +14,8 @@ All jar libraries are downloadable: http://petrskala.com/Documents/lib.zip
 Webdriver for Firefox (if you don't want using remoteWebDriver):
 https://github.com/mozilla/geckodriver/releases
 
+or other Webdrivers are inside selenium-standalone (see https://www.npmjs.com/package/selenium-standalone)
+
 
 ## Configuration
 
@@ -26,9 +28,12 @@ File config.xml have to be in root folder in your project. Rename config_example
         <browser>firefox</browser>
         <url>http://favoritetest.com/</url>
         <wait>20</wait>
-        <geckoPath>c:\\Program Files\\geckodriver\\geckodriver.exe</geckoPath>
+        <driverPath>c:\\Program Files\\geckodriver\\geckodriver.exe</driverPath>
         <remoteWebDriver>false</remoteWebDriver>
-        <size>desktop</size>
+        <size>DESKTOP</size>
+        <seleniumUrl>http://127.0.0.1:4444/wd/hub or https://USERNAME:ACCESS_KEY@ondemand.saucelabs.com:443/wd/hub ,....</seleniumUrl>
+        <platform>Windows XP</platform>
+        <version>43.0</version>
     </properties>
     <users>
         <user>
@@ -43,9 +48,12 @@ Properties:
 
 * browser - firefox, chrome, android, edge, htmlUnit, internetExplorer, ipad, iphone, operaBlink, phantomjs, safari - default value: firefox
 * wait - The timeout in seconds for element waiting (WebDriverWait).
-* geckoPath - path where is geckodriver present, use only if remoteWebDriver is set false
-* remoteWebDriver - true or false, chaice false use FirefoxDriver (geckodriver)
+* driverPath - path where is browser driver present, use only if remoteWebDriver is set false, drivers can be only Firefox (gecko), Chrome or Edge
+* remoteWebDriver - true or false
 * size - desktop, phone, iPad  - default value: desktop
+* seleniumUrl - only if remoteWebDriver is true, empty property or localhost url - selenium standalone should be installed and running (https://www.npmjs.com/package/selenium-standalone)
+* platform - OS system - more information is on saucelabs.com
+* version - browser version - more information is on saucelabs.com
 
 ## Run
 
