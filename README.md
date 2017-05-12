@@ -4,9 +4,10 @@ Selenium automation tests for favoritetest.com project written in java language.
 
 ## Development Environment
 
-Selenium - http://www.seleniumhq.org/download/
-TestNG - http://testng.org/doc/download.html
-Commons BeanUtils - http://commons.apache.org/proper/commons-beanutils/
+Libraries:
+* Selenium - http://www.seleniumhq.org/download/
+* TestNG - http://testng.org/doc/download.html
+* Commons BeanUtils - http://commons.apache.org/proper/commons-beanutils/
 
 All jar libraries are downloadable: http://petrskala.com/Documents/lib.zip
 
@@ -18,6 +19,7 @@ https://github.com/mozilla/geckodriver/releases
 
 File config.xml have to be in root folder in your project. Rename config_example.xml and set up your settings.
 
+```
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <configuration>
     <properties>
@@ -35,14 +37,26 @@ File config.xml have to be in root folder in your project. Rename config_example
         </user>
     </users>
 </configuration>
+```
 
 Properties:
-browser - firefox, chrome, android, edge, htmlUnit, internetExplorer, ipad, iphone, operaBlink, phantomjs, safari - default value: firefox
-wait - The timeout in seconds for element waiting (WebDriverWait).
-geckoPath - path where is geckodriver present, use only if remoteWebDriver is set false
-remoteWebDriver - true or false, chaice false use FirefoxDriver (geckodriver)
-size - desktop, phone, iPad  - default value: desktop
+
+* browser - firefox, chrome, android, edge, htmlUnit, internetExplorer, ipad, iphone, operaBlink, phantomjs, safari - default value: firefox
+* wait - The timeout in seconds for element waiting (WebDriverWait).
+* geckoPath - path where is geckodriver present, use only if remoteWebDriver is set false
+* remoteWebDriver - true or false, chaice false use FirefoxDriver (geckodriver)
+* size - desktop, phone, iPad  - default value: desktop
 
 ## Run
 
 TestNGSuite.xml
+
+## Contributors
+
+* [Petr Skala](http://github.com/pskala)
+
+## License
+
+Apache 2.0
+
+Copyright (c) 2017 Petr Skala
