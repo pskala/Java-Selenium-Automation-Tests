@@ -53,7 +53,7 @@ TestNGSuite.xml
 
 ## Contributors
 
-* [Petr Skala](http://github.com/pskala)
+* [Petr Skala](http://petrskala.com/)
 
 ## License
 
