@@ -4,9 +4,12 @@
         <browser>firefox</browser>
         <url>http://favoritetest.com/</url>
         <wait>20</wait>
-        <geckoPath>c:\\Program Files\\geckodriver\\geckodriver.exe</geckoPath>
+        <driverPath>c:\\Program Files\\geckodriver\\geckodriver.exe</driverPath>
         <remoteWebDriver>false</remoteWebDriver>
         <size>DESKTOP</size>
+        <seleniumUrl>http://127.0.0.1:4444/wd/hub or https://USERNAME:ACCESS_KEY@ondemand.saucelabs.com:443/wd/hub ,....</seleniumUrl>
+        <platform>Windows XP</platform>
+        <version>43.0</version>
     </properties>
     <users>
         <admin>

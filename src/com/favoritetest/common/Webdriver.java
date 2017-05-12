@@ -1,13 +1,15 @@
 package com.favoritetest.common;
 
+import java.net.URL;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
 
 /**
  *
@@ -18,13 +20,16 @@ public class Webdriver {
     protected WebDriver driver;
     protected Helpers helpers;
     protected WebDriverWait wait;
-    
-    protected final String BROWSER = XMLReader.getValue("properties.browser");
-    protected final boolean REMOTE_WEB_DRIVER = Boolean.parseBoolean(XMLReader.getValue("properties.remoteWebDriver"));;
-    protected final int WAIT = Integer.parseInt(XMLReader.getValue("properties.wait"));
-    protected final String URL = XMLReader.getValue("properties.url");
-    protected final String SIZE = XMLReader.getValue("properties.size");
 
+    protected final static String BROWSER = XMLReader.getValue("properties.browser");
+    protected final static boolean REMOTE_WEB_DRIVER = Boolean.parseBoolean(XMLReader.getValue("properties.remoteWebDriver"));
+    protected final static String DRIVERPATH = XMLReader.getValue("properties.driverPath");
+    protected final static int WAIT = Integer.parseInt(XMLReader.getValue("properties.wait"));
+    protected final static String URL = XMLReader.getValue("properties.url");
+    protected final static String SIZE = XMLReader.getValue("properties.size");
+    protected final static String SELENIUM_URL = XMLReader.getValue("properties.seleniumUrl");
+    protected final static String PLATFORM = XMLReader.getValue("properties.platform");
+    protected final static String VERSION = XMLReader.getValue("properties.version");
 
     @BeforeMethod(alwaysRun = true)
     public void beforeMethod() {
@@ -32,10 +37,10 @@ public class Webdriver {
         driver = setDriver(BROWSER, REMOTE_WEB_DRIVER);
         wait = new WebDriverWait(driver, WAIT);
         helpers = new Helpers(driver, wait);
-        
+
         // set window size
         WindowSize.setWindowSize(driver, SIZE);
-        
+
         driver.get(URL);
 
     }
@@ -54,8 +59,23 @@ public class Webdriver {
 
         if (!remoteWebDriver) {
 
-            System.setProperty("webdriver.gecko.driver", XMLReader.getValue("properties.geckoPath"));
-            driver = new FirefoxDriver();
+            switch (device.toUpperCase()) {
+
+                case "CHROME":
+                    System.setProperty("webdriver.chrome.driver", DRIVERPATH);
+                    driver = new ChromeDriver();
+                    break;
+
+                case "EDGE":
+                    System.setProperty("webdriver.edge.driver", DRIVERPATH);
+                    driver = new EdgeDriver();
+                    break;
+
+                default:
+                    System.setProperty("webdriver.gecko.driver", DRIVERPATH);
+                    driver = new FirefoxDriver();
+                    break;
+            }
 
         } else {
 
@@ -68,7 +88,7 @@ public class Webdriver {
                     break;
 
                 case "CHROME":
-                    capabilities = DesiredCapabilities.firefox();
+                    capabilities = DesiredCapabilities.chrome();
                     break;
 
                 case "ANDROID":
@@ -113,7 +133,32 @@ public class Webdriver {
             }
 
             capabilities.setCapability("marionette", true);
-            driver = new RemoteWebDriver(capabilities);
+
+            if (PLATFORM != null && !PLATFORM.isEmpty()) {
+                capabilities.setCapability("platform", PLATFORM);
+            }
+            if (VERSION != null && !VERSION.isEmpty()) {
+                capabilities.setCapability("version", VERSION);
+            }
+
+            if (SELENIUM_URL == null || SELENIUM_URL.isEmpty()) {
+
+                driver = new RemoteWebDriver(capabilities);
+
+            } else {
+
+                try {
+
+                    driver = new RemoteWebDriver(new URL(SELENIUM_URL), capabilities);
+
+                } catch (Exception e) {
+
+                    System.out.println(e);
+                    return null;
+
+                }
+
+            }
 
         }
 
