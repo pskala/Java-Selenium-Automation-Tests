@@ -12,10 +12,6 @@
         <version>43.0</version>
     </properties>
     <users>
-        <admin>
-            <name></name>
-            <password></password>
-        </admin>
         <user>
             <name></name>
             <password></password>
