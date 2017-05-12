@@ -17,7 +17,7 @@ public class WindowSize {
 
         Dimension dimension;
 
-        switch (size) {
+        switch (size.toUpperCase()) {
             case "PHONE":
                 dimension = WindowSize.PHONE;
                 break;

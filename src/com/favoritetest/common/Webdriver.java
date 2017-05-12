@@ -61,13 +61,52 @@ public class Webdriver {
 
             DesiredCapabilities capabilities;
 
-            switch (device) {
-                case "firefox":
+            switch (device.toUpperCase()) {
+
+                case "FIREFOX":
                     capabilities = DesiredCapabilities.firefox();
                     break;
-                case "chrome":
+
+                case "CHROME":
                     capabilities = DesiredCapabilities.firefox();
                     break;
+
+                case "ANDROID":
+                    capabilities = DesiredCapabilities.android();
+                    break;
+
+                case "EDGE":
+                    capabilities = DesiredCapabilities.edge();
+                    break;
+
+                case "HTMLUNIT":
+                    capabilities = DesiredCapabilities.htmlUnit();
+                    break;
+
+                case "INTERNETEXPLORER":
+                    capabilities = DesiredCapabilities.internetExplorer();
+                    break;
+
+                case "IPAD":
+                    capabilities = DesiredCapabilities.ipad();
+                    break;
+
+                case "IPHONE":
+                    capabilities = DesiredCapabilities.iphone();
+                    break;
+
+                case "OPERABLINK":
+                    capabilities = DesiredCapabilities.operaBlink();
+                    break;
+
+                case "PHANTOMJS":
+                    capabilities = DesiredCapabilities.phantomjs();
+                    break;
+
+                case "SAFARI":
+                    capabilities = DesiredCapabilities.safari();
+                    break;
+
                 default:
                     capabilities = DesiredCapabilities.firefox();
                     break;
