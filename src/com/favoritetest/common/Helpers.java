@@ -56,6 +56,108 @@ public class Helpers {
 
     }
 
+    /**
+     *
+     * @param name
+     * @param password
+     * @return - user account is accepted
+     */
+    public boolean loginByFB(String name, String password) {
+
+        String winHandleBefore = driver.getWindowHandle();
+
+        driver.findElement(By.cssSelector("div.fbbutton")).click();
+
+        driver.getWindowHandles().stream().forEach((winHandle) -> {
+
+            driver.switchTo().window(winHandle);
+
+        });
+
+        try {
+
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("email")));
+
+            driver.findElement(By.id("email")).sendKeys(name);
+            driver.findElement(By.id("pass")).sendKeys(password);
+            driver.findElement(By.id("loginbutton")).click();
+
+        } catch (Exception e) {
+
+        } finally {
+
+            driver.switchTo().window(winHandleBefore);
+
+        }
+        
+        try {
+
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("usernameChange")));
+
+        } catch (TimeoutException e) {
+
+            return false;
+
+        }
+
+        return true;
+
+    }
+
+    /**
+     *
+     * @param name
+     * @param password
+     * @return - user account is accepted
+     */
+    public boolean loginByGoogle(String name, String password) {
+
+        String winHandleBefore = driver.getWindowHandle();
+
+        driver.findElement(By.cssSelector("div.gpbutton")).click();
+
+        driver.getWindowHandles().stream().forEach((winHandle) -> {
+
+            driver.switchTo().window(winHandle);
+
+        });
+
+        try {
+
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[type='email']")));
+
+            driver.findElement(By.cssSelector("input[type='email']")).sendKeys(name);
+            
+            driver.findElement(By.id("identifierNext")).click();
+
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[type='password']")));
+
+            driver.findElement(By.cssSelector("input[type='password']")).sendKeys(password);
+
+            driver.findElement(By.id("passwordNext")).click();
+
+        } catch (Exception e) {
+
+        } finally {
+
+            driver.switchTo().window(winHandleBefore);
+
+        }
+        
+        try {
+
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("usernameChange")));
+
+        } catch (TimeoutException e) {
+
+            return false;
+
+        }
+
+        return true;
+
+    }
+
     public void logout() {
 
         driver.findElement(By.cssSelector("#username a")).click();
