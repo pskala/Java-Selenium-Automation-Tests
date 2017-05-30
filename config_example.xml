@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version='1.0' encoding='UTF-8' ?>
 <configuration>
     <properties>
         <browser>firefox</browser>
@@ -10,11 +10,32 @@
         <seleniumUrl>http://127.0.0.1:4444/wd/hub or https://USERNAME:ACCESS_KEY@ondemand.saucelabs.com:443/wd/hub ,....</seleniumUrl>
         <platform>Windows XP</platform>
         <version>43.0</version>
+        <excelFile>slovnik.xlsx</excelFile>
+        <excelUserLoginType>FACEBOOK</excelUserLoginType>
     </properties>
     <users>
         <user>
             <name></name>
             <password></password>
+            <facebookName></facebookName>
+            <facebookPassword></facebookPassword>
+            <googleName></googleName>
+            <googlePassword></googlePassword>
         </user>
     </users>
+    <excelTestCases>
+        <testcase>
+            <languagePage>česky</languagePage>
+            <testPath>/Languages/Others</testPath>
+            <testName>My first quizz</testName>
+            <description></description>
+            <visibility>pro všechny</visibility>
+            <languageTest>Ano</languageTest>
+            <questionLanguage>Anglicky</questionLanguage>
+            <answerLanguage>Polsky</answerLanguage>
+            <questionCell>1</questionCell>
+            <answerCell>2</answerCell>
+            <sheet>0</sheet>
+        </testcase>
+    </excelTestCases>
 </configuration>
